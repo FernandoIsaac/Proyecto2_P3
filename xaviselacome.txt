@@ -1,0 +1,17 @@
+1, Titanic Ant, true, 30
+
+2, Mondo Mole, true, 50
+
+5, Trillionage Sprout, true, 70
+
+7, Shroom, true, 80
+
+7, Plague Rat of Doom, true, 90
+
+10, Thunder and Storm, true, 100
+
+12, Electro Specter, true, 115
+
+20, Carbon Dog, true, 150
+
+50, Diamond Dog, true, 500

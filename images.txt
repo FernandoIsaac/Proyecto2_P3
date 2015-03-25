@@ -1,0 +1,10 @@
+/home/isaac/Proyecto_P3_FIRM/Sprites/1 - Titanic Ant.gif
+/home/isaac/Proyecto_P3_FIRM/Sprites/2 - Mondo Mole.gif
+/home/isaac/Proyecto_P3_FIRM/Sprites/3 - Trillionage Sprout.gif
+/home/isaac/Proyecto_P3_FIRM/Sprites/4 - Shrooom!.gif
+/home/isaac/Proyecto_P3_FIRM/Sprites/5 - Plague Rat of Doom.gif
+/home/isaac/Proyecto_P3_FIRM/Sprites/6 - Thunder and Storm.gif
+/home/isaac/Proyecto_P3_FIRM/Sprites/7 - Electro Specter.gif
+/home/isaac/Proyecto_P3_FIRM/Sprites/8 - Carbon Dog.gif
+/home/isaac/Proyecto_P3_FIRM/Sprites/9 - Diamond Dog.gif
+

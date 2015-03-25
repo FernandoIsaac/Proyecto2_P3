@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>music/004- Earthbound - Title Screen.mp3</file>
+        <file>music/006- Earthbound - Choose a File.mp3</file>
+        <file>music/030- Earthbound - Oncoming Foe.mp3</file>
+        <file>music/032- Earthbound - Battle Against a Weak Opponent.mp3</file>
+        <file>music/033- Earthbound - Battle Against a Weird Opponent.mp3</file>
+        <file>music/034- Earthbound - Battle Against a Mobile Opponent.mp3</file>
+        <file>music/035- Earthbound - You Win!.mp3</file>
+        <file>music/040- Earthbound - Battle Against an Unsettling Opponent.mp3</file>
+        <file>music/045- Earthbound - A Bad Dream.mp3</file>
+    </qresource>
+</RCC>

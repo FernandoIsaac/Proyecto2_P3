@@ -1,0 +1,27 @@
+<RCC>
+    <qresource prefix="/">
+        <file>1 - Titanic Ant.gif</file>
+        <file>2 - Mondo Mole.gif</file>
+        <file>3 - Trillionage Sprout.gif</file>
+        <file>4 - Shrooom!.gif</file>
+        <file>5 - Plague Rat of Doom.gif</file>
+        <file>6 - Thunder and Storm.gif</file>
+        <file>7 - Electro Specter.gif</file>
+        <file>8 - Carbon Dog.gif</file>
+        <file>9 - Diamond Dog.gif</file>
+        <file>Earthbound.png</file>
+        <file>giygas.jpg</file>
+        <file>Jeff.png</file>
+        <file>Jeff_Ghost.gif</file>
+        <file>Ness.png</file>
+        <file>Ness_Ghost.png</file>
+        <file>Ness_OK.png</file>
+        <file>Paula.gif</file>
+        <file>Paula2.gif</file>
+        <file>Paula_Ghost.gif</file>
+        <file>Poo.gif</file>
+        <file>Poo_Ghost.gif</file>
+        <file>resource.qrc</file>
+        <file>resources.qrc</file>
+    </qresource>
+</RCC>
