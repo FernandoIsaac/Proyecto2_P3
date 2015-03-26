@@ -12,3 +12,5 @@ NessWin::~NessWin()
 {
     delete ui;
 }
+
+

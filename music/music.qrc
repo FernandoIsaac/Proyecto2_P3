@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>004-_Earthbound_-_Title_Screen.wav</file>
+        <file>006-_Earthbound_-_Choose_a_File.wav</file>
+        <file>033-_Earthbound_-_Battle_Against_a_Weird_Opponent.wav</file>
+        <file>035-_Earthbound_-_You_Win_.wav</file>
+        <file>045-_Earthbound_-_A_Bad_Dream.wav</file>
+    </qresource>
+</RCC>

@@ -13,6 +13,8 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QFile>
+#include "jeffloss.h"
+#include "jeffwin.h"
 
 
 DEnemiesJeff::DEnemiesJeff(QWidget *parent) :
@@ -56,7 +58,7 @@ void DEnemiesJeff::on_pushButton_clicked()
 
         text.clear();
 
-        QFile file_for_reading("/home/isaac/Proyecto_P3_FIRM/xaviselacome.txt");
+        QFile file_for_reading(":/xaviselacome.txt");
         file_for_reading.open(QIODevice::ReadOnly);
         QTextStream text_stream_for_reading(&file_for_reading);
 
@@ -258,7 +260,7 @@ void DEnemiesJeff::on_pushButton_clicked()
         ui->l1->setText(QString::number(enemigos[random]->ataque));
         ui->l2->setText(QString::fromStdString(enemigos[random]->name));
         ui->l3->setText(QString::number(enemigos[random]->HP));
-        Jeff* jeff = new Jeff(15, "Jeff", true, 200, 0, 0);
+        Jeff* jeff = new Jeff(15, "Jeff", true, 201, 0, 0);
         ui->PlayerHP->setText(QString::number(jeff->HP));
         ui->PlayerMagic->setText(QString::number(jeff->magic));
         ui->IQ->setText(QString::number(jeff->IQ));
@@ -274,7 +276,7 @@ void DEnemiesJeff::on_attack_clicked()
     Jeff* jeff = new  Jeff(7, "Jeff", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->IQ->text().toInt());
         Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
         int turno = 0;
-        ui->Message->setText("Usted Ataco!");
+        ui->Message->setText("Jeff Ataco!");
         enemy->HP = enemy->getHP(jeff->getAtaque());
         jeff->IQ=jeff->getIQ();
         ui->HPBoss->setText(QString::number(enemy->HP));
@@ -293,6 +295,16 @@ void DEnemiesJeff::on_attack_clicked()
             ui->finish->setEnabled(true);
         }
         turno++;
+        if(enemy->HP<= 0){
+
+            JeffWin gano;
+            gano.setModal(true);
+            gano.exec();
+            ui->attack->setDisabled(true);
+            ui->magia->setDisabled(true);
+            ui->finish->setDisabled(true);
+            ui->HPBoss->setText("0");
+        }
 }
 
 void DEnemiesJeff::on_finish_clicked()
@@ -304,11 +316,25 @@ void DEnemiesJeff::on_finish_clicked()
         ui->PlayerHP->setText(QString::number((jeff->HP)));
         ui->attack->setEnabled(true);
         ui->magia->setEnabled(true);
-        if(jeff->IQ>=5){
+        ui->finish->setDisabled(true);
+
+        if(jeff->IQ>=4){
             ui->Message->setText("Jeff ha alcanzado 5 de IQ ahora construyo un arma poderosa!");
             ui->weapon->setVisible(true);
             ui->weapon->setEnabled(true);
         }
+
+        if(jeff->HP<=0){
+            ui->PlayerHP->setText("0");
+
+            JeffLoss loss;
+            loss.setModal(true);
+            loss.exec();
+            ui->attack->setDisabled(true);
+            ui->magia->setDisabled(true);
+            ui->finish->setDisabled(true);
+        }
+
 }
 
 void DEnemiesJeff::on_weapon_clicked()
@@ -318,5 +344,12 @@ void DEnemiesJeff::on_weapon_clicked()
         int turno = 0;
         enemy->HP=0;
         ui->HPBoss->setText("0");
+        ui->attack->setDisabled(true);
+        ui->magia->setDisabled(true);
+        ui->finish->setDisabled(true);
+        ui->weapon->setDisabled(true);
+        JeffWin j;
+        j.setModal(true);
+        j.exec();
 
 }

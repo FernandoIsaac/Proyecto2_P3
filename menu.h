@@ -2,7 +2,8 @@
 #define MENU_H
 
 #include <QDialog>
-
+#include <QApplication>
+#include <QSound>
 namespace Ui {
 class Menu;
 }
@@ -13,6 +14,8 @@ class Menu : public QDialog
 
 public:
     explicit Menu(QWidget *parent = 0);
+    QSound choose();
+
     ~Menu();
 
 private slots:

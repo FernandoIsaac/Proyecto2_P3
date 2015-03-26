@@ -6,7 +6,7 @@
 
 QT       += core gui
 
-greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets multimedia
 
 TARGET = Proyecto_P3_FIRM
 TEMPLATE = app
@@ -21,7 +21,6 @@ SOURCES += main.cpp\
     paula.cpp \
     jeff.cpp \
     poo.cpp \
-    denemy.cpp \
     denemiesjeff.cpp \
     dpoo.cpp \
     dpaula.cpp \
@@ -34,7 +33,7 @@ SOURCES += main.cpp\
     paulawin.cpp \
     paulaloss.cpp \
     almacenenemigos.cpp \
-    dness.cpp
+    denemy.cpp
 
 HEADERS  += mainwindow.h \
     character.h \
@@ -56,8 +55,7 @@ HEADERS  += mainwindow.h \
     pooloss.h \
     paulawin.h \
     paulaloss.h \
-    almacenenemigos.h \
-    dness.h
+    almacenenemigos.h
 
 FORMS    += mainwindow.ui \
     menu.ui \
@@ -76,7 +74,7 @@ FORMS    += mainwindow.ui \
 
 RESOURCES += \
     Sprites/resource.qrc \
-    music.qrc
+    text.qrc
 
 DISTFILES += \
     Sprites/1 - Titanic Ant.gif \

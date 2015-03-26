@@ -1,13 +1,12 @@
 <RCC>
     <qresource prefix="/">
-        <file>music/004- Earthbound - Title Screen.mp3</file>
-        <file>music/006- Earthbound - Choose a File.mp3</file>
-        <file>music/030- Earthbound - Oncoming Foe.mp3</file>
-        <file>music/032- Earthbound - Battle Against a Weak Opponent.mp3</file>
-        <file>music/033- Earthbound - Battle Against a Weird Opponent.mp3</file>
-        <file>music/034- Earthbound - Battle Against a Mobile Opponent.mp3</file>
-        <file>music/035- Earthbound - You Win!.mp3</file>
-        <file>music/040- Earthbound - Battle Against an Unsettling Opponent.mp3</file>
-        <file>music/045- Earthbound - A Bad Dream.mp3</file>
+        <file>qmlclass.qml</file>
+        <file>Qmltest.qml</file>
+        <file>QmltestForm.ui.qml</file>
+        <file>music/004-_Earthbound_-_Title_Screen.wav</file>
+        <file>music/006-_Earthbound_-_Choose_a_File.wav</file>
+        <file>music/033-_Earthbound_-_Battle_Against_a_Weird_Opponent.wav</file>
+        <file>music/035-_Earthbound_-_You_Win_.wav</file>
+        <file>music/045-_Earthbound_-_A_Bad_Dream.wav</file>
     </qresource>
 </RCC>

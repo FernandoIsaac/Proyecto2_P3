@@ -23,5 +23,8 @@
         <file>Poo_Ghost.gif</file>
         <file>resource.qrc</file>
         <file>resources.qrc</file>
+        <file>004-_Earthbound_-_Title_Screen.wav</file>
+        <file>035-_Earthbound_-_You_Win_.wav</file>
+        <file>033-_Earthbound_-_Battle_Against_a_Weird_Opponent.wav</file>
     </qresource>
 </RCC>

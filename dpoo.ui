@@ -531,19 +531,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="sprite_2">
-   <property name="geometry">
-    <rect>
-     <x>160</x>
-     <y>250</y>
-     <width>151</width>
-     <height>171</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QLabel" name="label_5">
    <property name="geometry">
     <rect>
@@ -768,6 +755,22 @@
     <bool>true</bool>
    </property>
   </widget>
+  <widget class="QPushButton" name="pushButton_3">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>170</x>
+     <y>240</y>
+     <width>99</width>
+     <height>27</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>PK Starstorm</string>
+   </property>
+  </widget>
   <zorder>label_6</zorder>
   <zorder>l2</zorder>
   <zorder>l3</zorder>
@@ -788,7 +791,6 @@
   <zorder>label</zorder>
   <zorder>label_2</zorder>
   <zorder>HPBoss_2</zorder>
-  <zorder>sprite_2</zorder>
   <zorder>label_5</zorder>
   <zorder>magia_2</zorder>
   <zorder>attack_2</zorder>
@@ -801,6 +803,7 @@
   <zorder>l3_2</zorder>
   <zorder>finish_2</zorder>
   <zorder>l1_2</zorder>
+  <zorder>pushButton_3</zorder>
  </widget>
  <resources>
   <include location="Sprites/resource.qrc"/>

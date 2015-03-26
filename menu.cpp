@@ -10,6 +10,11 @@
 #include "denemiesjeff.h"
 #include "dpoo.h"
 #include "dpaula.h"
+#include <QApplication>
+#include <QSound>
+#include <qsound.h>
+
+
 Menu::Menu(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Menu)

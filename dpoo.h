@@ -15,6 +15,17 @@ public:
     explicit dPoo(QWidget *parent = 0);
     ~dPoo();
 
+private slots:
+    void on_pushButton_clicked();
+
+    void on_attack_clicked();
+
+    void on_magia_clicked();
+
+    void on_finish_clicked();
+
+    void on_pushButton_3_clicked();
+
 private:
     Ui::dPoo *ui;
 };

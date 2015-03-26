@@ -2,7 +2,8 @@
 #define NESSWIN_H
 
 #include <QDialog>
-
+#include <QSound>
+#include <qsound.h>
 namespace Ui {
 class NessWin;
 }

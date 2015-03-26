@@ -13,6 +13,8 @@
 #include <QFile>
 #include <nesswin.h>
 #include <nessloss.h>
+#include <QSound>
+#include <qsound.h>
 
 
 using std::string;
@@ -63,7 +65,7 @@ void DEnemy::on_pushButton_clicked()
 
     text.clear();
 
-    QFile file_for_reading("/home/isaac/Proyecto_P3_FIRM/xaviselacome.txt");
+    QFile file_for_reading(":/xaviselacome.txt");
     file_for_reading.open(QIODevice::ReadOnly);
     QTextStream text_stream_for_reading(&file_for_reading);
 
@@ -234,15 +236,15 @@ void DEnemy::on_pushButton_clicked()
 
     file_for_reading.close();
         vector<char*> imagenes;
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/1 - Titanic Ant.gif");
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/2 - Mondo Mole.gif");
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/3 - Trillionage Sprout.gif");
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/4 - Shrooom!.gif");
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/5 - Plague Rat of Doom.gif");
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/6 - Thunder and Storm.gif");
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/7 - Electro Specter.gif");
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/8 - Carbon Dog.gif");
-    imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/9 - Diamond Dog.gif");
+        imagenes.push_back(":/1 - Titanic Ant.gif");
+        imagenes.push_back(":/2 - Mondo Mole.gif");
+        imagenes.push_back(":/3 - Trillionage Sprout.gif");
+        imagenes.push_back(":/4 - Shrooom!.gif");
+        imagenes.push_back(":/5 - Plague Rat of Doom.gif");
+        imagenes.push_back(":/6 - Thunder and Storm.gif");
+        imagenes.push_back(":/7 - Electro Specter.gif");
+        imagenes.push_back(":/8 - Carbon Dog.gif");
+        imagenes.push_back(":/9 - Diamond Dog.gif");
 
     random = rand() % 9;
 
@@ -269,7 +271,8 @@ void DEnemy::on_pushButton_clicked()
     ui->PlayerHP->setText(QString::number(ness->HP));
     ui->PlayerMagic->setText(QString::number(ness->magic));
     myLabel.show();
-
+    QSound title(":/033-_Earthbound_-_Battle_Against_a_Weird_Opponent.wav");
+    title.play();
     //ui->PlayerHP->setText(QString::number());
 
 }
@@ -282,7 +285,7 @@ void DEnemy::on_attack_clicked()
 
 
     int turno = 0;
-    ui->Message->setText("Usted Ataco!");
+    ui->Message->setText("Ness Ataco!");
     //enemy->HP = enemy->getHP()- ness->getAtaque();
     enemy->HP = enemy->getHP(ness->getAtaque());
     ui->HPBoss->setText(QString::number(enemy->HP));
@@ -301,13 +304,16 @@ void DEnemy::on_attack_clicked()
     }
     turno++;
     if(enemy->HP<= 0){
-
+        ui->HPBoss->setText("0");
         NessWin gano;
         gano.setModal(true);
         gano.exec();
+        QSound title(":/035-_Earthbound_-_You_Win_.wav");
+        title.play();
         ui->attack->setDisabled(true);
         ui->magia->setDisabled(true);
         ui->finish->setDisabled(true);
+
     }
 
 }
@@ -320,7 +326,7 @@ void DEnemy::on_magia_clicked()
     int turno = 0;
 
     Ness* ness = new Ness(15, "Ness", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt());
-    ui->Message->setText("Usted Uso Magia para Regenerar su vida!");
+    ui->Message->setText("Ness Uso Magia para Regenerar su vida!");
 
     if(ness->magic>0){
         ness->magic = ness->getMagic();
@@ -356,11 +362,16 @@ void DEnemy::on_finish_clicked()
     ui->PlayerHP->setText(QString::number(ness->HP));
     ui->attack->setEnabled(true);
     ui->magia->setEnabled(true);
-
+    ui->finish->setDisabled(true);
     if(ness->HP<=0){
+        ui->PlayerHP->setText("0");
         NessLoss loss;
         loss.setModal(true);
         loss.exec();
+        ui->attack->setDisabled(true);
+        ui->magia->setDisabled(true);
+        ui->finish->setDisabled(true);
+
     }
 
 }

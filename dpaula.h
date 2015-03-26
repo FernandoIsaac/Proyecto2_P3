@@ -24,6 +24,8 @@ private slots:
 
     void on_ataquemagica_clicked();
 
+    void on_finish_clicked();
+
 private:
     Ui::dPaula *ui;
 };
