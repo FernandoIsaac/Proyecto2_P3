@@ -46,12 +46,18 @@ void dPoo::on_pushButton_clicked()
     //Q_UNUSED(argc);
     //Q_UNUSED(argv);
 
-   vector<Enemy*> enemigos;
 
-   QString text;
+    vector<Enemy*> enemigos;
 
-   QFile File_For_Writing("xaviselacome.txt");
-   File_For_Writing.open(QIODevice::WriteOnly | QIODevice::Truncate);
+
+    QString text;
+
+
+    QFile File_For_Writing("xaviselacome.txt");
+
+
+    File_For_Writing.open(QIODevice::WriteOnly | QIODevice::Truncate);
+
     QTextStream text_stream_for_writing(&File_For_Writing);
 
     text = "Xavi Se La Come";
@@ -59,6 +65,7 @@ void dPoo::on_pushButton_clicked()
     text_stream_for_writing<<text;
 
     File_For_Writing.close();
+
 
     text.clear();
 
