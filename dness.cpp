@@ -54,21 +54,26 @@ void DNess::on_pushButton_clicked()
 
    QFile File_For_Writing("xaviselacome.txt");
    File_For_Writing.open(QIODevice::WriteOnly | QIODevice::Truncate);
-    QTextStream text_stream_for_writing(&File_For_Writing);
 
-    text = "Xavi Se La Come";
+   QTextStream text_stream_for_writing(&File_For_Writing);
 
-    text_stream_for_writing<<text;
 
-    File_For_Writing.close();
+   text = "Xavi Se La Come";
 
-    text.clear();
+   text_stream_for_writing<<text;
 
-    QFile file_for_reading(":/xaviselacome.txt");
-    file_for_reading.open(QIODevice::ReadOnly);
-    QTextStream text_stream_for_reading(&file_for_reading);
+   File_For_Writing.close();
 
-    for(int i = 0; i < 9; i++){
+   text.clear();
+
+   QFile file_for_reading(":/xaviselacome.txt");
+
+   file_for_reading.open(QIODevice::ReadOnly);
+
+   QTextStream text_stream_for_reading(&file_for_reading);
+
+
+   for(int i = 0; i < 9; i++){
         if(i==0){
             if(cont==0){
                 text_stream_for_reading.seek(0);
@@ -232,18 +237,27 @@ void DNess::on_pushButton_clicked()
                 }
     }
 
-
     file_for_reading.close();
-        vector<char*> imagenes;
-        imagenes.push_back(":/1 - Titanic Ant.gif");
-        imagenes.push_back(":/2 - Mondo Mole.gif");
-        imagenes.push_back(":/3 - Trillionage Sprout.gif");
-        imagenes.push_back(":/4 - Shrooom!.gif");
-        imagenes.push_back(":/5 - Plague Rat of Doom.gif");
-        imagenes.push_back(":/6 - Thunder and Storm.gif");
-        imagenes.push_back(":/7 - Electro Specter.gif");
-        imagenes.push_back(":/8 - Carbon Dog.gif");
-        imagenes.push_back(":/9 - Diamond Dog.gif");
+
+    vector<char*> imagenes;
+
+    imagenes.push_back(":/1 - Titanic Ant.gif");
+
+    imagenes.push_back(":/2 - Mondo Mole.gif");
+
+    imagenes.push_back(":/3 - Trillionage Sprout.gif");
+
+    imagenes.push_back(":/4 - Shrooom!.gif");
+
+    imagenes.push_back(":/5 - Plague Rat of Doom.gif");
+
+    imagenes.push_back(":/6 - Thunder and Storm.gif");
+
+    imagenes.push_back(":/7 - Electro Specter.gif");
+
+    imagenes.push_back(":/8 - Carbon Dog.gif");
+
+    imagenes.push_back(":/9 - Diamond Dog.gif");
 
     random = rand() % 9;
 
@@ -270,8 +284,10 @@ void DNess::on_pushButton_clicked()
     ui->PlayerHP->setText(QString::number(ness->HP));
     ui->PlayerMagic->setText(QString::number(ness->magic));
     myLabel.show();
-    QSound title(":/033-_Earthbound_-_Battle_Against_a_Weird_Opponent.wav");
-    title.play();
+    // QSound title(":/033-_Earthbound_-_Battle_Against_a_Weird_Opponent.wav");
+    //title.play();
+    QSound *sound=new QSound(":/033-_Earthbound_-_Battle_Against_a_Weird_Opponent.wav");
+    QObject::connect(ui->pushButton,SIGNAL(clicked()),sound,SLOT(play()));
     //ui->PlayerHP->setText(QString::number());
 
 }

@@ -233,7 +233,8 @@ void dPoo::on_pushButton_clicked()
 
 
     file_for_reading.close();
-        vector<char*> imagenes;
+
+    vector<char*> imagenes;
 
     imagenes.push_back(":/1 - Titanic Ant.gif");
     imagenes.push_back(":/2 - Mondo Mole.gif");
@@ -249,7 +250,7 @@ void dPoo::on_pushButton_clicked()
     random = rand() % 9;
 
     QImage myImage;
-    //myImage.load("/home/isaac/Desktop/Sprites/Poo.png");
+
     myImage.load(imagenes[random]);
 
     QLabel myLabel;
@@ -324,65 +325,117 @@ void dPoo::on_attack_clicked()
 
 void dPoo::on_magia_clicked()
 {
+
     int turno = 0;
 
-        Poo* poo = new Poo(11, "Poo", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), 100);
-        ui->Message->setText("Poo Uso Magia para Regenerar su vida!");
+    Poo* poo = new Poo(11, "Poo", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), 100);
 
-        if(poo->magic>0){
-            poo->magic = poo->getMagic();
-            poo->HP = 260;
-        }
-        else{
-            ui->Message->setText("No Tienes suficiente magia!");
-        }
-        ui->PlayerMagic->setText(QString::number(poo->magic));
-        ui->PlayerHP->setText(QString::number(poo->HP));
-        if(turno%2==0){
-            ui->attack->setEnabled(true);
-            ui->magia->setEnabled(true);
-            ui->finish->setDisabled(true);
-            if(starstormbool==true){
-                ui->pushButton_3->setEnabled(true);
-            }
-        }
-        turno++;
-        if(turno%2!=0){
-            ui->attack->setDisabled(true);
-            ui->magia->setDisabled(true);
-            ui->finish->setEnabled(true);
-            if(starstormbool==true){
-                ui->pushButton_3->setDisabled(true);
-            }
+    ui->Message->setText("Poo Uso Magia para Regenerar su vida!");
+
+
+    if(poo->magic>0){
+
+        poo->magic = poo->getMagic();
+
+        poo->HP = 260;
+
+    }
+
+    else{
+
+        ui->Message->setText("No Tienes suficiente magia!");
+
+    }
+
+    ui->PlayerMagic->setText(QString::number(poo->magic));
+
+    ui->PlayerHP->setText(QString::number(poo->HP));
+
+    if(turno%2==0){
+
+        ui->attack->setEnabled(true);
+
+        ui->magia->setEnabled(true);
+
+        ui->finish->setDisabled(true);
+
+        if(starstormbool==true){
+
+            ui->pushButton_3->setEnabled(true);
 
         }
-        turno++;
+
+    }
+
+    turno++;
+
+    if(turno%2!=0){
+
+        ui->attack->setDisabled(true);
+
+        ui->magia->setDisabled(true);
+
+        ui->finish->setEnabled(true);
+
+        if(starstormbool==true){
+
+            ui->pushButton_3->setDisabled(true);
+
+
+        }
+
+
+    }
+
+    turno++;
 }
 
 void dPoo::on_finish_clicked()
 {
     Poo* poo = new Poo(9, "Poo", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), 100.0);
-        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
-        ui->Message->setText("El Enemigo ha Atacado!");
-        //poo->HP=poo->getHP() - enemy->getAtaque();
-        poo->HP=poo->getHP(enemy->getAtaque());
-        ui->PlayerHP->setText(QString::number(poo->HP));
-        ui->attack->setEnabled(true);
-        ui->magia->setEnabled(true);
-        ui->finish->setDisabled(true);
-        if(starstormbool==true){
-            ui->pushButton_3->setEnabled(true);
-        }
-        if(poo->HP<=0){
-            ui->PlayerHP->setText("0");
-            PooLoss loss;
-            loss.setModal(true);
-            loss.exec();
-            ui->attack->setDisabled(true);
-            ui->magia->setDisabled(true);
-            ui->finish->setDisabled(true);
+
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
+
+    ui->Message->setText("El Enemigo ha Atacado!");
+
+    //poo->HP=poo->getHP() - enemy->getAtaque();
+
+    poo->HP=poo->getHP(enemy->getAtaque());
+
+    ui->PlayerHP->setText(QString::number(poo->HP));
+
+    ui->attack->setEnabled(true);
+
+    ui->magia->setEnabled(true);
+
+    ui->finish->setDisabled(true);
+
+    if(starstormbool==true){
+
+        ui->pushButton_3->setEnabled(true);
+
     }
+
+    if(poo->HP<=0){
+
+        ui->PlayerHP->setText("0");
+
+        PooLoss loss;
+
+        loss.setModal(true);
+
+        loss.exec();
+
+        ui->attack->setDisabled(true);
+
+        ui->magia->setDisabled(true);
+
+        ui->finish->setDisabled(true);
+
+    }
+
 }
+
 void dPoo::on_pushButton_3_clicked()
 {
     Poo* poo = new Poo(11, "Poo", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), 100.0);
@@ -395,6 +448,7 @@ void dPoo::on_pushButton_3_clicked()
     starstormbool = false;
     poo->starstorm = 0.0;
     ui->finish->setEnabled(true);
+
     if(enemy->HP<= 0){
         ui->HPBoss->setText("0");
         PooWin gano;

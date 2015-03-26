@@ -35,37 +35,34 @@ DJeff::~DJeff()
 void DJeff::on_pushButton_clicked()
 {
     srand(time(0));
-        int random;
-        int cont=0;
-        unsigned int bossattack;
-        string bossname;
-        bool bossalive = true;
-        int bossHP;
+    int random;
+    int cont=0;
+    unsigned int bossattack;
+    string bossname;
+    bool bossalive = true;
+    int bossHP;
 
-        //Q_UNUSED(argc);
-        //Q_UNUSED(argv);
+    vector<Enemy*> enemigos;
 
-       vector<Enemy*> enemigos;
+    QString text;
 
-       QString text;
+    QFile File_For_Writing("xaviselacome.txt");
+    File_For_Writing.open(QIODevice::WriteOnly | QIODevice::Truncate);
+    QTextStream text_stream_for_writing(&File_For_Writing);
 
-       QFile File_For_Writing("xaviselacome.txt");
-       File_For_Writing.open(QIODevice::WriteOnly | QIODevice::Truncate);
-        QTextStream text_stream_for_writing(&File_For_Writing);
+    text = "Xavi Se La Come";
 
-        text = "Xavi Se La Come";
+    text_stream_for_writing<<text;
 
-        text_stream_for_writing<<text;
+    File_For_Writing.close();
 
-        File_For_Writing.close();
+    text.clear();
 
-        text.clear();
+    QFile file_for_reading(":/xaviselacome.txt");
+    file_for_reading.open(QIODevice::ReadOnly);
+    QTextStream text_stream_for_reading(&file_for_reading);
 
-        QFile file_for_reading(":/xaviselacome.txt");
-        file_for_reading.open(QIODevice::ReadOnly);
-        QTextStream text_stream_for_reading(&file_for_reading);
-
-        for(int i = 0; i < 9; i++){
+    for(int i = 0; i < 9; i++){
             if(i==0){
                 if(cont==0){
                     text_stream_for_reading.seek(0);
@@ -229,130 +226,192 @@ void DJeff::on_pushButton_clicked()
                     }
         }
 
+    file_for_reading.close();
 
-        file_for_reading.close();
-            vector<char*> imagenes;
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/1 - Titanic Ant.gif");
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/2 - Mondo Mole.gif");
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/3 - Trillionage Sprout.gif");
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/4 - Shrooom!.gif");
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/5 - Plague Rat of Doom.gif");
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/6 - Thunder and Storm.gif");
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/7 - Electro Specter.gif");
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/8 - Carbon Dog.gif");
-        imagenes.push_back("/home/isaac/Proyecto_P3_FIRM/Sprites/9 - Diamond Dog.gif");
+    vector<char*> imagenes;
+    imagenes.push_back(":/1 - Titanic Ant.gif");
+    imagenes.push_back(":/2 - Mondo Mole.gif");
+    imagenes.push_back(":/3 - Trillionage Sprout.gif");
+    imagenes.push_back(":/4 - Shrooom!.gif");
+    imagenes.push_back(":/5 - Plague Rat of Doom.gif");
+    imagenes.push_back(":/6 - Thunder and Storm.gif");
+    imagenes.push_back(":/7 - Electro Specter.gif");
+    imagenes.push_back(":/8 - Carbon Dog.gif");
+    imagenes.push_back(":/9 - Diamond Dog.gif");
 
-        random = rand() % 9;
 
-        QImage myImage;
-        //myImage.load("/home/isaac/Desktop/Sprites/Jeff.png");
-        myImage.load(imagenes[random]);
+    random = rand() % 9;
 
-        QLabel myLabel;
-        myLabel.setPixmap(QPixmap::fromImage(myImage));
-        ui->sprite->setPixmap(QPixmap::fromImage(myImage));
-        ui->HPBoss->setText( QString::number((enemigos[random]->HP)));
-        ui->pushButton->setDisabled(true);
-        ui->attack->setEnabled(true);
-        ui->magia->setEnabled(true);
-        ui->EnemyStoreAttack->setVisible(false);
-        ui->EnemyStoreName->setVisible(false);
-        ui->EnemyStoreHP->setVisible(false);
-        //ui->l5->setVisible(false);
-        /*bossattack, bossname, true, bossHP, 0)*/
-        ui->EnemyStoreAttack->setText(QString::number(enemigos[random]->ataque));
-        ui->EnemyStoreName->setText(QString::fromStdString(enemigos[random]->name));
-        ui->EnemyStoreHP->setText(QString::number(enemigos[random]->HP));
-        Jeff* jeff = new Jeff(15, "Jeff", true, 201, 0, 0);
-        ui->PlayerHP->setText(QString::number(jeff->HP));
-        ui->PlayerMagic->setText(QString::number(jeff->magic));
-        ui->IQ->setText(QString::number(jeff->IQ));
-        ui->weapon->setVisible(false);
-        myLabel.show();
+    QImage myImage;
+    myImage.load(imagenes[random]);
 
-        //ui->PlayerHP->setText(QString::number());
+    QLabel myLabel;
+    myLabel.setPixmap(QPixmap::fromImage(myImage));
+    ui->sprite->setPixmap(QPixmap::fromImage(myImage));
+    ui->HPBoss->setText( QString::number((enemigos[random]->HP)));
+    ui->pushButton->setDisabled(true);
+    ui->attack->setEnabled(true);
+    ui->magia->setEnabled(true);
+    ui->EnemyStoreAttack->setVisible(false);
+    ui->EnemyStoreName->setVisible(false);
+    ui->EnemyStoreHP->setVisible(false);
+    ui->EnemyStoreAttack->setText(QString::number(enemigos[random]->ataque));
+    ui->EnemyStoreName->setText(QString::fromStdString(enemigos[random]->name));
+    ui->EnemyStoreHP->setText(QString::number(enemigos[random]->HP));
+    Jeff* jeff = new Jeff(15, "Jeff", true, 201, 0, 0);
+    ui->PlayerHP->setText(QString::number(jeff->HP));
+    ui->PlayerMagic->setText(QString::number(jeff->magic));
+    ui->IQ->setText(QString::number(jeff->IQ));
+    ui->weapon->setVisible(false);
+    myLabel.show();
+
+
 }
 
 
 void DJeff::on_attack_clicked()
 {
     Jeff* jeff = new  Jeff(7, "Jeff", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->IQ->text().toInt());
-        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
-        int turno = 0;
-        ui->Message->setText("Jeff Ataco!");
-        enemy->HP = enemy->getHP(jeff->getAtaque());
-        jeff->IQ=jeff->getIQ();
-        ui->HPBoss->setText(QString::number(enemy->HP));
-        ui->EnemyStoreHP->setText(QString::number(enemy->HP));
-        ui->IQ->setText(QString::number(jeff->IQ));
 
-        if(turno%2==0){
-            ui->attack->setEnabled(true);
-            ui->magia->setEnabled(true);
-            ui->finish->setDisabled(true);
-        }
-        turno++;
-        if(turno%2!=0){
-            ui->attack->setDisabled(true);
-            ui->magia->setDisabled(true);
-            ui->finish->setEnabled(true);
-        }
-        turno++;
-        if(enemy->HP<= 0){
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
 
-            JeffWin gano;
-            gano.setModal(true);
-            gano.exec();
-            ui->attack->setDisabled(true);
-            ui->magia->setDisabled(true);
-            ui->finish->setDisabled(true);
-            ui->HPBoss->setText("0");
-        }
+    int turno = 0;
+
+    ui->Message->setText("Jeff Ataco!");
+
+    enemy->HP = enemy->getHP(jeff->getAtaque());
+
+    jeff->IQ=jeff->getIQ();
+
+    ui->HPBoss->setText(QString::number(enemy->HP));
+
+    ui->EnemyStoreHP->setText(QString::number(enemy->HP));
+
+    ui->IQ->setText(QString::number(jeff->IQ));
+
+
+    if(turno%2==0){
+
+        ui->attack->setEnabled(true);
+
+        ui->magia->setEnabled(true);
+
+        ui->finish->setDisabled(true);
+
+    }
+
+    turno++;
+
+    if(turno%2!=0){
+
+        ui->attack->setDisabled(true);
+
+        ui->magia->setDisabled(true);
+
+        ui->finish->setEnabled(true);
+
+    }
+
+    turno++;
+
+    if(enemy->HP<= 0){
+
+        JeffWin gano;
+
+        gano.setModal(true);
+
+        gano.exec();
+
+        ui->attack->setDisabled(true);
+
+        ui->magia->setDisabled(true);
+
+        ui->finish->setDisabled(true);
+
+        ui->HPBoss->setText("0");
+
+    }
+
 }
 
 void DJeff::on_finish_clicked()
 {
+
     Jeff* jeff = new  Jeff(7, "Jeff", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->IQ->text().toInt());
-        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
-        ui->Message->setText("El Enemigo ha Atacado!");
-         jeff->HP=jeff->getHP(enemy->getAtaque());
-        ui->PlayerHP->setText(QString::number((jeff->HP)));
-        ui->attack->setEnabled(true);
-        ui->magia->setEnabled(true);
+
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
+
+    ui->Message->setText("El Enemigo ha Atacado!");
+
+    jeff->HP=jeff->getHP(enemy->getAtaque());
+
+    ui->PlayerHP->setText(QString::number((jeff->HP)));
+
+    ui->attack->setEnabled(true);
+
+    ui->magia->setEnabled(true);
+
+    ui->finish->setDisabled(true);
+
+
+
+    if(jeff->IQ>=4){
+
+        ui->Message->setText("Jeff ha alcanzado 5 de IQ ahora construyo un arma poderosa!");
+
+        ui->weapon->setVisible(true);
+
+        ui->weapon->setEnabled(true);
+
+    }
+
+
+    if(jeff->HP<=0){
+
+        ui->PlayerHP->setText("0");
+
+
+        JeffLoss loss;
+
+        loss.setModal(true);
+
+        loss.exec();
+
+        ui->attack->setDisabled(true);
+
+        ui->magia->setDisabled(true);
+
         ui->finish->setDisabled(true);
 
-        if(jeff->IQ>=4){
-            ui->Message->setText("Jeff ha alcanzado 5 de IQ ahora construyo un arma poderosa!");
-            ui->weapon->setVisible(true);
-            ui->weapon->setEnabled(true);
-        }
-
-        if(jeff->HP<=0){
-            ui->PlayerHP->setText("0");
-
-            JeffLoss loss;
-            loss.setModal(true);
-            loss.exec();
-            ui->attack->setDisabled(true);
-            ui->magia->setDisabled(true);
-            ui->finish->setDisabled(true);
-        }
+    }
 
 }
 
 void DJeff::on_weapon_clicked()
 {
+
     Jeff* jeff = new  Jeff(7, "Jeff", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->IQ->text().toInt());
-        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
-        int turno = 0;
-        enemy->HP=0;
-        ui->HPBoss->setText("0");
-        ui->attack->setDisabled(true);
-        ui->magia->setDisabled(true);
-        ui->finish->setDisabled(true);
-        ui->weapon->setDisabled(true);
-        JeffWin j;
-        j.setModal(true);
-        j.exec();
+
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
+
+    int turno = 0;
+
+    enemy->HP=0;
+
+    ui->HPBoss->setText("0");
+
+    ui->attack->setDisabled(true);
+
+    ui->magia->setDisabled(true);
+
+    ui->finish->setDisabled(true);
+
+    ui->weapon->setDisabled(true);
+
+    JeffWin j;
+
+    j.setModal(true);
+
+    j.exec();
 
 }

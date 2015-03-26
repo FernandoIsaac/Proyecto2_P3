@@ -33,26 +33,21 @@ dPaula::~dPaula()
 void dPaula::on_pushButton_clicked()
 {
     srand(time(0));
-        int random;
-        int cont=0;
-        unsigned int bossattack;
-        string bossname;
-        bool bossalive = true;
-        int bossHP;
+    int random;
+    int cont=0;
+    unsigned int bossattack;
+    string bossname;
+    bool bossalive = true;
+    int bossHP;
+    vector<Enemy*> enemigos;
 
-        //Q_UNUSED(argc);
-        //Q_UNUSED(argv);
+    QString text;
 
-       vector<Enemy*> enemigos;
+    QFile file_for_reading(":/xaviselacome.txt");
+    file_for_reading.open(QIODevice::ReadOnly);
+    QTextStream text_stream_for_reading(&file_for_reading);
 
-       QString text;
-
-
-       QFile file_for_reading(":/xaviselacome.txt");
-        file_for_reading.open(QIODevice::ReadOnly);
-        QTextStream text_stream_for_reading(&file_for_reading);
-
-        for(int i = 0; i < 9; i++){
+    for(int i = 0; i < 9; i++){
             if(i==0){
                 if(cont==0){
                     text_stream_for_reading.seek(0);
@@ -218,21 +213,20 @@ void dPaula::on_pushButton_clicked()
 
 
         file_for_reading.close();
-            vector<char*> imagenes;
-            imagenes.push_back(":/1 - Titanic Ant.gif");
-            imagenes.push_back(":/2 - Mondo Mole.gif");
-            imagenes.push_back(":/3 - Trillionage Sprout.gif");
-            imagenes.push_back(":/4 - Shrooom!.gif");
-            imagenes.push_back(":/5 - Plague Rat of Doom.gif");
-            imagenes.push_back(":/6 - Thunder and Storm.gif");
-            imagenes.push_back(":/7 - Electro Specter.gif");
-            imagenes.push_back(":/8 - Carbon Dog.gif");
-            imagenes.push_back(":/9 - Diamond Dog.gif");
+        vector<char*> imagenes;
+        imagenes.push_back(":/1 - Titanic Ant.gif");
+        imagenes.push_back(":/2 - Mondo Mole.gif");
+        imagenes.push_back(":/3 - Trillionage Sprout.gif");
+        imagenes.push_back(":/4 - Shrooom!.gif");
+        imagenes.push_back(":/5 - Plague Rat of Doom.gif");
+        imagenes.push_back(":/6 - Thunder and Storm.gif");
+        imagenes.push_back(":/7 - Electro Specter.gif");
+        imagenes.push_back(":/8 - Carbon Dog.gif");
+        imagenes.push_back(":/9 - Diamond Dog.gif");
 
         random = rand() % 9;
 
         QImage myImage;
-        //myImage.load("/home/isaac/Desktop/Sprites/Paula.png");
         myImage.load(imagenes[random]);
 
         QLabel myLabel;
@@ -246,8 +240,6 @@ void dPaula::on_pushButton_clicked()
         ui->EnemyStoreAttack->setVisible(false);
         ui->EnemyStoreName->setVisible(false);
         ui->EnemyStoreHP->setVisible(false);
-        //ui->l5->setVisible(false);
-        /*bossattack, bossname, true, bossHP, 0)*/
         ui->EnemyStoreAttack->setText(QString::number(enemigos[random]->ataque));
         ui->EnemyStoreName->setText(QString::fromStdString(enemigos[random]->name));
         ui->EnemyStoreHP->setText(QString::number(enemigos[random]->HP));
@@ -257,48 +249,55 @@ void dPaula::on_pushButton_clicked()
         ui->Lucky->setText(QString::number(paula->lucky));
         myLabel.show();
 
-        //ui->PlayerHP->setText(QString::number());
+
 }
 
 void dPaula::on_attack_clicked()
 {
     Paula*  paula = new  Paula(9, "Paula", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->Lucky->text().toInt());
-        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
-        int turno = 0;
-        ui->Message->setText("Paula Ataco!");
-        enemy->HP = enemy->getHP(paula->getAtaque());
-        paula->lucky=paula->lucky+1;
-        ui->Lucky->setText(QString::number(paula->lucky));
-        if(paula->lucky>=6){
-            ui->Message->setText("Paula ha alcanzado suerte de 6, ataque X2");
-            enemy->HP = enemy->getHP(paula->getAtaque()*2);
-        }
-        ui->HPBoss->setText(QString::number(enemy->HP));
-        ui->EnemyStoreHP->setText(QString::number(enemy->HP));
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
+    int turno = 0;
+    ui->Message->setText("Paula Ataco!");
+    enemy->HP = enemy->getHP(paula->getAtaque());
+    paula->lucky=paula->lucky+1;
+    ui->Lucky->setText(QString::number(paula->lucky));
 
-        if(turno%2==0){
-            ui->attack->setEnabled(true);
-            ui->magia->setEnabled(true);
-            ui->finish->setDisabled(true);
-        }
-        turno++;
-        if(turno%2!=0){
-            ui->attack->setDisabled(true);
-            ui->magia->setDisabled(true);
-            ui->ataquemagica->setDisabled(true);
-            ui->finish->setEnabled(true);
-        }
-        turno++;
-        if(enemy->HP<= 0){
-            ui->HPBoss->setText("0");
-            PaulaWin gano;
-            gano.setModal(true);
-            gano.exec();
-            ui->attack->setDisabled(true);
-            ui->magia->setDisabled(true);
-            ui->finish->setDisabled(true);
-            ui->ataquemagica->setDisabled(true);
-        }
+    if(paula->lucky>=6){
+        ui->Message->setText("Paula ha alcanzado suerte de 6, ataque X2");
+        enemy->HP = enemy->getHP(paula->getAtaque()*2);
+    }
+    ui->HPBoss->setText(QString::number(enemy->HP));
+    ui->EnemyStoreHP->setText(QString::number(enemy->HP));
+
+    if(turno%2==0){
+        ui->attack->setEnabled(true);
+        ui->magia->setEnabled(true);
+        ui->finish->setDisabled(true);
+    }
+
+    turno++;
+
+    if(turno%2!=0){
+        ui->attack->setDisabled(true);
+        ui->magia->setDisabled(true);
+        ui->ataquemagica->setDisabled(true);
+        ui->finish->setEnabled(true);
+
+    }
+
+    turno++;
+
+    if(enemy->HP<= 0){
+        ui->HPBoss->setText("0");
+        PaulaWin gano;
+        gano.setModal(true);
+        gano.exec();
+        ui->attack->setDisabled(true);
+        ui->magia->setDisabled(true);
+        ui->finish->setDisabled(true);
+        ui->ataquemagica->setDisabled(true);
+
+    }
 
 }
 
@@ -317,91 +316,133 @@ void dPaula::on_magia_clicked()
     }
     ui->PlayerMagic->setText(QString::number(paula->magic));
     ui->PlayerHP->setText(QString::number(paula->HP));
+
     if(turno%2==0){
         ui->attack->setEnabled(true);
         ui->magia->setEnabled(true);
         ui->finish->setDisabled(true);
     }
+
     turno++;
+
     if(turno%2!=0){
         ui->attack->setDisabled(true);
         ui->magia->setDisabled(true);
         ui->ataquemagica->setDisabled(true);
         ui->finish->setEnabled(true);
     }
+
     turno++;
 
 }
 
 
 void dPaula::on_ataquemagica_clicked()
-{        int turno = 0;
+{
+    int turno = 0;
+    Paula*  paula = new  Paula(9, "Paula", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->Lucky->text().toInt());    
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
+    ui->Message->setText("Paula utilizo PK THUNDER!");
 
-    Paula*  paula = new  Paula(9, "Paula", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->Lucky->text().toInt());
-        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
-        ui->Message->setText("Paula utilizo PK THUNDER!");
-        enemy->HP = enemy->getHP(40);
-        ui->HPBoss->setText(QString::number(enemy->HP));
-        ui->EnemyStoreHP->setText(QString::number(enemy->HP));
+    enemy->HP = enemy->getHP(40);
+    ui->HPBoss->setText(QString::number(enemy->HP));
+    ui->EnemyStoreHP->setText(QString::number(enemy->HP));
 
-        if(turno%2==0){
-            ui->attack->setEnabled(true);
-            ui->magia->setEnabled(true);
-            ui->finish->setDisabled(true);
-        }
+    if(turno%2==0){
+        ui->attack->setEnabled(true);
+        ui->magia->setEnabled(true);
+        ui->finish->setDisabled(true);
+    }
 
-        if(paula->magic>0){
-            paula->magic = paula->magic-10;
+    if(paula->magic>0){
+        paula->magic = paula->magic-10;
 
+    }
+    else{
 
-        }
+        ui->Message->setText("No Tienes suficiente magia!");
 
-        else{
-            ui->Message->setText("No Tienes suficiente magia!");
-        }
-        ui->PlayerMagic->setText(QString::number(paula->magic));
+    }
+
+    ui->PlayerMagic->setText(QString::number(paula->magic));
+
+    turno++;
+
+    if(turno%2!=0){
+
+        ui->attack->setDisabled(true);
+
+        ui->magia->setDisabled(true);
+
+        ui->ataquemagica->setDisabled(true);
+
+        ui->finish->setEnabled(true);
+
+    }
         turno++;
-        if(turno%2!=0){
+
+        if(enemy->HP<= 0){
+
+            ui->HPBoss->setText("0");
+
+            PaulaWin gano;
+
+            gano.setModal(true);
+
+            gano.exec();
+
             ui->attack->setDisabled(true);
+
             ui->magia->setDisabled(true);
+
+            ui->finish->setDisabled(true);
+
             ui->ataquemagica->setDisabled(true);
-            ui->finish->setEnabled(true);
+
         }
-        turno++;
-             if(enemy->HP<= 0){
-                 ui->HPBoss->setText("0");
-                 PaulaWin gano;
-                 gano.setModal(true);
-                 gano.exec();
-                 ui->attack->setDisabled(true);
-                 ui->magia->setDisabled(true);
-                 ui->finish->setDisabled(true);
-                 ui->ataquemagica->setDisabled(true);
-             }
 
      }
 
 
 void dPaula::on_finish_clicked()
 {
+
     Paula* paula = new Paula(9, "Paula", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->Lucky->text().toInt());
-     Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
-     ui->Message->setText("El Enemigo ha Atacado!");
-     //paula->HP=paula->getHP() - enemy->getAtaque();
-     paula->HP=paula->getHP(enemy->getAtaque());
-     ui->PlayerHP->setText(QString::number(paula->HP));
-     ui->attack->setEnabled(true);
-     ui->magia->setEnabled(true);
-     ui->finish->setDisabled(true);
-     ui->ataquemagica->setEnabled(true);
-     if(paula->HP<=0){
-         ui->PlayerHP->setText("0");
-         PaulaLoss loss;
-         loss.setModal(true);
-         loss.exec();
-         ui->attack->setDisabled(true);
-         ui->magia->setDisabled(true);
-         ui->finish->setDisabled(true);
-         ui->ataquemagica->setDisabled(true);
+
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
+
+    ui->Message->setText("El Enemigo ha Atacado!");
+
+    //paula->HP=paula->getHP() - enemy->getAtaque();
+
+    paula->HP=paula->getHP(enemy->getAtaque());
+
+    ui->PlayerHP->setText(QString::number(paula->HP));
+
+    ui->attack->setEnabled(true);
+
+    ui->magia->setEnabled(true);
+
+    ui->finish->setDisabled(true);
+
+    ui->ataquemagica->setEnabled(true);
+
+    if(paula->HP<=0){
+
+        ui->PlayerHP->setText("0");
+
+        PaulaLoss loss;
+
+        loss.setModal(true);
+
+        loss.exec();
+
+        ui->attack->setDisabled(true);
+
+        ui->magia->setDisabled(true);
+
+        ui->finish->setDisabled(true);
+
+        ui->ataquemagica->setDisabled(true);
      }
 }
