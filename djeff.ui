@@ -171,20 +171,7 @@
     <string>Terminar Turno</string>
    </property>
   </widget>
-  <widget class="QLabel" name="l5">
-   <property name="geometry">
-    <rect>
-     <x>80</x>
-     <y>30</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="label_4">
+  <widget class="QLabel" name="labelIQ">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -337,7 +324,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="l1">
+  <widget class="QLabel" name="labelhp">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -353,7 +340,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="l2">
+  <widget class="QLabel" name="EnemyStoreName">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -366,7 +353,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="l3">
+  <widget class="QLabel" name="EnemyStoreHP">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -379,7 +366,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_2">
+  <widget class="QLabel" name="EnemyStoreAttack">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -495,7 +482,7 @@
     <string>Atacar</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_3">
+  <widget class="QLabel" name="labelmagic">
    <property name="geometry">
     <rect>
      <x>240</x>
@@ -611,7 +598,7 @@
     <string>Usar arma</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label_5">
+  <widget class="QLabel" name="fondo">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -633,24 +620,23 @@
     <bool>true</bool>
    </property>
   </widget>
-  <zorder>label_5</zorder>
+  <zorder>fondo</zorder>
   <zorder>magia</zorder>
   <zorder>pushButton</zorder>
   <zorder>label</zorder>
   <zorder>sprite</zorder>
   <zorder>PlayerHP</zorder>
   <zorder>finish</zorder>
-  <zorder>l5</zorder>
-  <zorder>label_4</zorder>
+  <zorder>labelIQ</zorder>
   <zorder>Message</zorder>
   <zorder>HPBoss</zorder>
-  <zorder>l1</zorder>
-  <zorder>l2</zorder>
-  <zorder>l3</zorder>
-  <zorder>label_2</zorder>
+  <zorder>labelhp</zorder>
+  <zorder>EnemyStoreName</zorder>
+  <zorder>EnemyStoreHP</zorder>
+  <zorder>EnemyStoreAttack</zorder>
   <zorder>PlayerMagic</zorder>
   <zorder>attack</zorder>
-  <zorder>label_3</zorder>
+  <zorder>labelmagic</zorder>
   <zorder>IQ</zorder>
   <zorder>weapon</zorder>
  </widget>

@@ -6,8 +6,8 @@
 #include "jeff.h"
 #include "poo.h"
 #include "enemy.h"
-#include "denemy.h"
-#include "denemiesjeff.h"
+#include "dness.h"
+#include "djeff.h"
 #include "dpoo.h"
 #include "dpaula.h"
 #include <QApplication>
@@ -32,7 +32,7 @@ void Menu::on_BNess_clicked()
     //DNess mm;
     //mm.setModal(true);
     //mm.exec();
-    DEnemy nn;
+    DNess nn;
     nn.setModal(true);
     nn.exec();
 
@@ -44,7 +44,7 @@ void Menu::on_BNess_clicked()
 
 void Menu::on_BJeff_clicked()
 {
-    DEnemiesJeff jj;
+    DJeff jj;
     jj.setModal(true);
     jj.exec();
 }

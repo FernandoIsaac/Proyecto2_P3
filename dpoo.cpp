@@ -1,6 +1,5 @@
 #include "dpoo.h"
 #include "ui_dpoo.h"
-#include "almacenenemigos.h"
 #include <QApplication>
 #include <QLabel>
 #include "poo.h"
@@ -13,6 +12,7 @@
 #include <QFile>
 #include <poowin.h>
 #include <pooloss.h>
+#include "enemy.h"
 
 
 using std::string;
@@ -259,14 +259,14 @@ void dPoo::on_pushButton_clicked()
     ui->pushButton->setDisabled(true);
     ui->attack->setEnabled(true);
     ui->magia->setEnabled(true);
-    ui->l1->setVisible(false);
-    ui->l2->setVisible(false);
-    ui->l3->setVisible(false);
-    ui->l5->setVisible(false);
+    ui->EnemyStoreAttack->setVisible(false);
+    ui->EnemyStoreName->setVisible(false);
+    ui->EnemyStoreHP->setVisible(false);
+    //ui->l5->setVisible(false);
     /*bossattack, bossname, true, bossHP, 0)*/
-    ui->l1->setText(QString::number(enemigos[random]->ataque));
-    ui->l2->setText(QString::fromStdString(enemigos[random]->name));
-    ui->l3->setText(QString::number(enemigos[random]->HP));
+    ui->EnemyStoreAttack->setText(QString::number(enemigos[random]->ataque));
+    ui->EnemyStoreName->setText(QString::fromStdString(enemigos[random]->name));
+    ui->EnemyStoreHP->setText(QString::number(enemigos[random]->HP));
     Poo* poo = new Poo(11, "Poo", true, 220, 10, 100.0);
     ui->PlayerHP->setText(QString::number(poo->HP));
     ui->PlayerMagic->setText(QString::number(poo->magic));
@@ -281,7 +281,7 @@ void dPoo::on_pushButton_clicked()
 void dPoo::on_attack_clicked()
 {
     Poo* poo = new Poo(11, "Poo", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), 100.0);
-    Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
 
 
     int turno = 0;
@@ -289,7 +289,7 @@ void dPoo::on_attack_clicked()
     //enemy->HP = enemy->getHP()- poo->getAtaque();
     enemy->HP = enemy->getHP(poo->getAtaque());
     ui->HPBoss->setText(QString::number(enemy->HP));
-    ui->l3->setText(QString::number(enemy->HP));
+    ui->EnemyStoreHP->setText(QString::number(enemy->HP));
 
     if(turno%2==0){
         ui->attack->setEnabled(true);
@@ -362,7 +362,7 @@ void dPoo::on_magia_clicked()
 void dPoo::on_finish_clicked()
 {
     Poo* poo = new Poo(9, "Poo", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), 100.0);
-        Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
         ui->Message->setText("El Enemigo ha Atacado!");
         //poo->HP=poo->getHP() - enemy->getAtaque();
         poo->HP=poo->getHP(enemy->getAtaque());
@@ -386,11 +386,11 @@ void dPoo::on_finish_clicked()
 void dPoo::on_pushButton_3_clicked()
 {
     Poo* poo = new Poo(11, "Poo", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), 100.0);
-    Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+    Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
     ui->Message->setText("POO USO PK STARSTORM!!");
     enemy->HP = enemy->getHP(100);
     ui->HPBoss->setText(QString::number(enemy->HP));
-    ui->l3->setText(QString::number(enemy->HP));
+    ui->EnemyStoreHP->setText(QString::number(enemy->HP));
     ui->pushButton_3->setVisible(false);
     starstormbool = false;
     poo->starstorm = 0.0;

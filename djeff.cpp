@@ -1,8 +1,7 @@
-#include "denemiesjeff.h"
-#include "ui_denemiesjeff.h"
-#include "denemy.h"
+#include "djeff.h"
+#include "ui_djeff.h"
+#include "dness.h"
 #include "ui_denemy.h"
-#include "almacenenemigos.h"
 #include <QApplication>
 #include <QLabel>
 #include "jeff.h"
@@ -15,21 +14,25 @@
 #include <QFile>
 #include "jeffloss.h"
 #include "jeffwin.h"
+#include "enemy.h"
+
+using std::vector;
+using std::string;
 
 
-DEnemiesJeff::DEnemiesJeff(QWidget *parent) :
+DJeff::DJeff(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::DEnemiesJeff)
 {
     ui->setupUi(this);
 }
 
-DEnemiesJeff::~DEnemiesJeff()
+DJeff::~DJeff()
 {
     delete ui;
 }
 
-void DEnemiesJeff::on_pushButton_clicked()
+void DJeff::on_pushButton_clicked()
 {
     srand(time(0));
         int random;
@@ -252,14 +255,14 @@ void DEnemiesJeff::on_pushButton_clicked()
         ui->pushButton->setDisabled(true);
         ui->attack->setEnabled(true);
         ui->magia->setEnabled(true);
-        ui->l1->setVisible(false);
-        ui->l2->setVisible(false);
-        ui->l3->setVisible(false);
-        ui->l5->setVisible(false);
+        ui->EnemyStoreAttack->setVisible(false);
+        ui->EnemyStoreName->setVisible(false);
+        ui->EnemyStoreHP->setVisible(false);
+        //ui->l5->setVisible(false);
         /*bossattack, bossname, true, bossHP, 0)*/
-        ui->l1->setText(QString::number(enemigos[random]->ataque));
-        ui->l2->setText(QString::fromStdString(enemigos[random]->name));
-        ui->l3->setText(QString::number(enemigos[random]->HP));
+        ui->EnemyStoreAttack->setText(QString::number(enemigos[random]->ataque));
+        ui->EnemyStoreName->setText(QString::fromStdString(enemigos[random]->name));
+        ui->EnemyStoreHP->setText(QString::number(enemigos[random]->HP));
         Jeff* jeff = new Jeff(15, "Jeff", true, 201, 0, 0);
         ui->PlayerHP->setText(QString::number(jeff->HP));
         ui->PlayerMagic->setText(QString::number(jeff->magic));
@@ -271,16 +274,16 @@ void DEnemiesJeff::on_pushButton_clicked()
 }
 
 
-void DEnemiesJeff::on_attack_clicked()
+void DJeff::on_attack_clicked()
 {
     Jeff* jeff = new  Jeff(7, "Jeff", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->IQ->text().toInt());
-        Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
         int turno = 0;
         ui->Message->setText("Jeff Ataco!");
         enemy->HP = enemy->getHP(jeff->getAtaque());
         jeff->IQ=jeff->getIQ();
         ui->HPBoss->setText(QString::number(enemy->HP));
-        ui->l3->setText(QString::number(enemy->HP));
+        ui->EnemyStoreHP->setText(QString::number(enemy->HP));
         ui->IQ->setText(QString::number(jeff->IQ));
 
         if(turno%2==0){
@@ -307,10 +310,10 @@ void DEnemiesJeff::on_attack_clicked()
         }
 }
 
-void DEnemiesJeff::on_finish_clicked()
+void DJeff::on_finish_clicked()
 {
     Jeff* jeff = new  Jeff(7, "Jeff", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->IQ->text().toInt());
-        Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
         ui->Message->setText("El Enemigo ha Atacado!");
          jeff->HP=jeff->getHP(enemy->getAtaque());
         ui->PlayerHP->setText(QString::number((jeff->HP)));
@@ -337,10 +340,10 @@ void DEnemiesJeff::on_finish_clicked()
 
 }
 
-void DEnemiesJeff::on_weapon_clicked()
+void DJeff::on_weapon_clicked()
 {
     Jeff* jeff = new  Jeff(7, "Jeff", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->IQ->text().toInt());
-        Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
         int turno = 0;
         enemy->HP=0;
         ui->HPBoss->setText("0");

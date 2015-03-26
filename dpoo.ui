@@ -13,7 +13,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="l2">
+  <widget class="QLabel" name="EnemyStoreName">
    <property name="geometry">
     <rect>
      <x>50</x>
@@ -26,24 +26,11 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="l3">
+  <widget class="QLabel" name="EnemyStoreHP">
    <property name="geometry">
     <rect>
      <x>40</x>
      <y>190</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
-  <widget class="QLabel" name="l5">
-   <property name="geometry">
-    <rect>
-     <x>40</x>
-     <y>-20</y>
      <width>67</width>
      <height>17</height>
     </rect>
@@ -310,7 +297,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="l1">
+  <widget class="QLabel" name="EnemyStoreAttack">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -602,32 +589,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="label_8">
-   <property name="geometry">
-    <rect>
-     <x>350</x>
-     <y>400</y>
-     <width>81</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Jeff Magic:</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="l2_2">
-   <property name="geometry">
-    <rect>
-     <x>190</x>
-     <y>430</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="pushButton_2">
    <property name="geometry">
     <rect>
@@ -654,19 +615,6 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="l3_2">
-   <property name="geometry">
-    <rect>
-     <x>180</x>
-     <y>390</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
-   </property>
-  </widget>
   <widget class="QPushButton" name="finish_2">
    <property name="enabled">
     <bool>false</bool>
@@ -681,22 +629,6 @@
    </property>
    <property name="text">
     <string>Terminar Turno</string>
-   </property>
-  </widget>
-  <widget class="QLabel" name="l1_2">
-   <property name="enabled">
-    <bool>false</bool>
-   </property>
-   <property name="geometry">
-    <rect>
-     <x>460</x>
-     <y>300</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string/>
    </property>
   </widget>
   <widget class="QLabel" name="label_6">
@@ -772,9 +704,8 @@
    </property>
   </widget>
   <zorder>label_6</zorder>
-  <zorder>l2</zorder>
-  <zorder>l3</zorder>
-  <zorder>l5</zorder>
+  <zorder>EnemyStoreName</zorder>
+  <zorder>EnemyStoreHP</zorder>
   <zorder>PlayerMagic</zorder>
   <zorder>Message</zorder>
   <zorder>pushButton</zorder>
@@ -783,7 +714,7 @@
   <zorder>finish</zorder>
   <zorder>magia</zorder>
   <zorder>HPBoss</zorder>
-  <zorder>l1</zorder>
+  <zorder>EnemyStoreAttack</zorder>
   <zorder>attack</zorder>
   <zorder>sprite</zorder>
   <zorder>label_3</zorder>
@@ -796,13 +727,9 @@
   <zorder>attack_2</zorder>
   <zorder>PlayerMagic_2</zorder>
   <zorder>PlayerHP_2</zorder>
-  <zorder>label_8</zorder>
-  <zorder>l2_2</zorder>
   <zorder>pushButton_2</zorder>
   <zorder>IQ_2</zorder>
-  <zorder>l3_2</zorder>
   <zorder>finish_2</zorder>
-  <zorder>l1_2</zorder>
   <zorder>pushButton_3</zorder>
  </widget>
  <resources>

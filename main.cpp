@@ -12,14 +12,13 @@
 #include <poo.h>
 #include <QFile>
 #include <jeff.h>
-#include "almacenenemigos.h"
 #include <QSound>
 #include <qsound.h>
 #include <QApplication>
 #include "menu.h"
 #include "character.h"
-#include "denemiesjeff.h"
-#include "denemy.h"
+#include "djeff.h"
+#include "dness.h"
 #include "dpaula.h"
 #include "dpoo.h"
 #include "jeff.h"
@@ -42,13 +41,17 @@ int main(int argc, char *argv[])
 {
 
     QSound title(":/004-_Earthbound_-_Title_Screen.wav");
+
     title.play();
+
 
 
     QApplication a(argc, argv);
     MainWindow w;
     w.show();
 
+    //QSound battle(":/035-_Earthbound_-_You_Win_.wav");
+    //battle.play();
 
     return a.exec();
 }

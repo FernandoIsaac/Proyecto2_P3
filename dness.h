@@ -1,5 +1,5 @@
-#ifndef DENEMY_H
-#define DENEMY_H
+#ifndef DNESS_H
+#define DNESS_H
 
 #include <QDialog>
 
@@ -7,13 +7,13 @@ namespace Ui {
 class DEnemy;
 }
 
-class DEnemy : public QDialog
+class DNess : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit DEnemy(QWidget *parent = 0);
-    ~DEnemy();
+    explicit DNess(QWidget *parent = 0);
+    ~DNess();
 
 private slots:
     void on_pushButton_clicked();
@@ -28,4 +28,4 @@ private:
     Ui::DEnemy *ui;
 };
 
-#endif // DENEMY_H
+#endif // NESS_H

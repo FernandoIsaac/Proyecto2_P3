@@ -1,5 +1,5 @@
-#ifndef DENEMIESJEFF_H
-#define DENEMIESJEFF_H
+#ifndef DJEFF_H
+#define DJEFF_H
 
 #include <QDialog>
 
@@ -7,13 +7,13 @@ namespace Ui {
 class DEnemiesJeff;
 }
 
-class DEnemiesJeff : public QDialog
+class DJeff : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit DEnemiesJeff(QWidget *parent = 0);
-    ~DEnemiesJeff();
+    explicit DJeff(QWidget *parent = 0);
+    ~DJeff();
 
 private slots:
     void on_pushButton_clicked();

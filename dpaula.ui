@@ -458,7 +458,7 @@
     <string>Paula Magic:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="l2">
+  <widget class="QLabel" name="EnemyStoreName">
    <property name="geometry">
     <rect>
      <x>100</x>
@@ -534,7 +534,7 @@
     <string/>
    </property>
   </widget>
-  <widget class="QLabel" name="l3">
+  <widget class="QLabel" name="EnemyStoreHP">
    <property name="geometry">
     <rect>
      <x>90</x>
@@ -563,7 +563,7 @@
     <string>Terminar Turno</string>
    </property>
   </widget>
-  <widget class="QLabel" name="l1">
+  <widget class="QLabel" name="EnemyStoreAttack">
    <property name="enabled">
     <bool>false</bool>
    </property>
@@ -663,12 +663,12 @@
   <zorder>Message</zorder>
   <zorder>PlayerHP</zorder>
   <zorder>label_4</zorder>
-  <zorder>l2</zorder>
+  <zorder>EnemyStoreName</zorder>
   <zorder>pushButton</zorder>
   <zorder>Lucky</zorder>
-  <zorder>l3</zorder>
+  <zorder>EnemyStoreHP</zorder>
   <zorder>finish</zorder>
-  <zorder>l1</zorder>
+  <zorder>EnemyStoreAttack</zorder>
   <zorder>ataquemagica</zorder>
  </widget>
  <resources>

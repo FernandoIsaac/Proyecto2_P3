@@ -4,7 +4,7 @@
 #include <QGuiApplication>
 #include <QSound>
 
-QSound *sound=new QSound("/home/isaac/Proyecto_P3_FIRM/music/006-_Earthbound_-_Choose_a_File.wav");
+//QSound *sound=new QSound("/home/isaac/Proyecto_P3_FIRM/music/006-_Earthbound_-_Choose_a_File.wav");
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
     //thread = new QThread();
     ui->play->moveToThread(thread);
-    connect(ui->play, SIGNAL(clicked()),sound,SLOT(play()));
+    //connect(ui->play, SIGNAL(clicked()),sound,SLOT(play()));
     ui->label_2->setVisible(false);
 
 }
@@ -42,7 +42,7 @@ void MainWindow::on_play_clicked()
 {
 
     //QSound *sound=new QSound("/home/isaac/Proyecto_P3_FIRM/music/006-_Earthbound_-_Choose_a_File.wav");
-    QObject::connect(ui->play,SIGNAL(clicked()),sound,SLOT(play()));
+   // QObject::connect(ui->play,SIGNAL(clicked()),sound,SLOT(play()));
 
 }
 

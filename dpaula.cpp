@@ -1,6 +1,5 @@
 #include "dpaula.h"
 #include "ui_dpaula.h"
-#include "almacenenemigos.h"
 #include <QApplication>
 #include <QLabel>
 #include "dpaula.h"
@@ -14,6 +13,7 @@
 #include <QFile>
 #include "paulaloss.h"
 #include "paulawin.h"
+#include "enemy.h"
 
 using std::vector;
 using std::string;
@@ -243,14 +243,14 @@ void dPaula::on_pushButton_clicked()
         ui->attack->setEnabled(true);
         ui->magia->setEnabled(true);
         ui->ataquemagica->setEnabled(true);
-        ui->l1->setVisible(false);
-        ui->l2->setVisible(false);
-        ui->l3->setVisible(false);
+        ui->EnemyStoreAttack->setVisible(false);
+        ui->EnemyStoreName->setVisible(false);
+        ui->EnemyStoreHP->setVisible(false);
         //ui->l5->setVisible(false);
         /*bossattack, bossname, true, bossHP, 0)*/
-        ui->l1->setText(QString::number(enemigos[random]->ataque));
-        ui->l2->setText(QString::fromStdString(enemigos[random]->name));
-        ui->l3->setText(QString::number(enemigos[random]->HP));
+        ui->EnemyStoreAttack->setText(QString::number(enemigos[random]->ataque));
+        ui->EnemyStoreName->setText(QString::fromStdString(enemigos[random]->name));
+        ui->EnemyStoreHP->setText(QString::number(enemigos[random]->HP));
         Paula* paula = new Paula(9, "Paula", true, 150, 60, 1);
         ui->PlayerHP->setText(QString::number(paula->HP));
         ui->PlayerMagic->setText(QString::number(paula->magic));
@@ -263,7 +263,7 @@ void dPaula::on_pushButton_clicked()
 void dPaula::on_attack_clicked()
 {
     Paula*  paula = new  Paula(9, "Paula", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->Lucky->text().toInt());
-        Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
         int turno = 0;
         ui->Message->setText("Paula Ataco!");
         enemy->HP = enemy->getHP(paula->getAtaque());
@@ -274,7 +274,7 @@ void dPaula::on_attack_clicked()
             enemy->HP = enemy->getHP(paula->getAtaque()*2);
         }
         ui->HPBoss->setText(QString::number(enemy->HP));
-        ui->l3->setText(QString::number(enemy->HP));
+        ui->EnemyStoreHP->setText(QString::number(enemy->HP));
 
         if(turno%2==0){
             ui->attack->setEnabled(true);
@@ -338,11 +338,11 @@ void dPaula::on_ataquemagica_clicked()
 {        int turno = 0;
 
     Paula*  paula = new  Paula(9, "Paula", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->Lucky->text().toInt());
-        Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+        Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
         ui->Message->setText("Paula utilizo PK THUNDER!");
         enemy->HP = enemy->getHP(40);
         ui->HPBoss->setText(QString::number(enemy->HP));
-        ui->l3->setText(QString::number(enemy->HP));
+        ui->EnemyStoreHP->setText(QString::number(enemy->HP));
 
         if(turno%2==0){
             ui->attack->setEnabled(true);
@@ -385,7 +385,7 @@ void dPaula::on_ataquemagica_clicked()
 void dPaula::on_finish_clicked()
 {
     Paula* paula = new Paula(9, "Paula", true,ui->PlayerHP->text().toInt(),ui->PlayerMagic->text().toInt(), ui->Lucky->text().toInt());
-     Enemy* enemy = new Enemy(ui->l1->text().toInt(), ui->l2->text().toStdString(), true, ui->l3->text().toInt(), 0);
+     Enemy* enemy = new Enemy(ui->EnemyStoreAttack->text().toInt(), ui->EnemyStoreName->text().toStdString(), true, ui->EnemyStoreHP->text().toInt(), 0);
      ui->Message->setText("El Enemigo ha Atacado!");
      //paula->HP=paula->getHP() - enemy->getAtaque();
      paula->HP=paula->getHP(enemy->getAtaque());

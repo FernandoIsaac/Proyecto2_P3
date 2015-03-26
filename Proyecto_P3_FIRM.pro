@@ -21,7 +21,6 @@ SOURCES += main.cpp\
     paula.cpp \
     jeff.cpp \
     poo.cpp \
-    denemiesjeff.cpp \
     dpoo.cpp \
     dpaula.cpp \
     nesswin.cpp \
@@ -32,8 +31,8 @@ SOURCES += main.cpp\
     pooloss.cpp \
     paulawin.cpp \
     paulaloss.cpp \
-    almacenenemigos.cpp \
-    denemy.cpp
+    djeff.cpp \
+    dness.cpp
 
 HEADERS  += mainwindow.h \
     character.h \
@@ -43,8 +42,6 @@ HEADERS  += mainwindow.h \
     paula.h \
     jeff.h \
     poo.h \
-    denemy.h \
-    denemiesjeff.h \
     dpoo.h \
     dpaula.h \
     nesswin.h \
@@ -55,12 +52,11 @@ HEADERS  += mainwindow.h \
     pooloss.h \
     paulawin.h \
     paulaloss.h \
-    almacenenemigos.h
+    dness.h \
+    djeff.h
 
 FORMS    += mainwindow.ui \
     menu.ui \
-    denemy.ui \
-    denemiesjeff.ui \
     dpoo.ui \
     dpaula.ui \
     nesswin.ui \
@@ -70,7 +66,9 @@ FORMS    += mainwindow.ui \
     poowin.ui \
     pooloss.ui \
     paulawin.ui \
-    paulaloss.ui
+    paulaloss.ui \
+    djeff.ui \
+    dness.ui
 
 RESOURCES += \
     Sprites/resource.qrc \
